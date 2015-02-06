@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff">
+
+    <!-- The main content view -->
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/menu_main">
+    </FrameLayout>
+
+    <!-- The navigation drawer -->
+    <RelativeLayout
+        android:id="@+id/menu_layout_left"
+        android:layout_width="240dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="left"
+        android:background="#fff9fffd">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="48dip"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:paddingLeft="16dip"
+            android:padding="8dip"
+            android:id="@+id/student_info_item"/>
+        <ListView
+            android:id="@+id/menu_listView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/student_info_item" >
+        </ListView>
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

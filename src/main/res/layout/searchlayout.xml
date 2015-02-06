@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/list_container">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_view">
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="48dip"
+            android:id="@+id/search_text"
+            android:hint="@string/enter_symbola"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:editable="true"
+            android:padding="8dip"
+            android:background="@drawable/search_edit"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="48dip" />
+        <Button
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:id="@+id/search_button"
+            android:background="@drawable/search_btn"
+            android:text="@string/search_btn"
+            android:padding="0dip"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#ffffffff"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/search_text" />
+    </RelativeLayout>
+    <app.cheng.gc.PullTool.PulltorefreshLayout
+        android:id="@+id/refresh_view"
+        android:layout_below="@id/search_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <!-- 支持所有实现Pullable接口的View -->
+        <app.cheng.gc.PullTool.PullableListView
+            android:id="@+id/content_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffffff"
+            android:divider="#ffa3a3a3"
+            android:dividerHeight="1dp"
+            android:layout_marginTop="5dip"
+            android:choiceMode="singleChoice"
+            android:orientation="horizontal"
+            android:layout_below="@id/search_view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:footerDividersEnabled="true" />
+        <include layout="@layout/load_more" />
+
+    </app.cheng.gc.PullTool.PulltorefreshLayout>
+    <!--<ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="5dip"
+        android:choiceMode="singleChoice"
+        android:id="@+id/listBook"
+        android:orientation="horizontal"
+        android:layout_below="@id/search_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:divider="#000000"
+        android:dividerHeight="1px"
+        android:footerDividersEnabled="true">
+    </ListView> -->
+</RelativeLayout>

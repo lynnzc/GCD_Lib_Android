@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#4951ffcc">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_bookname"
+        android:text="@string/history_book_name"
+        android:textSize="24sp"
+        android:textColor="#ff000000"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookname"
+        android:layout_toRightOf="@id/item_bookname"
+        android:textSize="20sp"
+        android:textColor="#ff000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_borrowtime"
+        android:text="@string/history_book_borrowtime"
+        android:textSize="24sp"
+        android:textColor="#ff000000"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/borrowtime"
+        android:layout_toRightOf="@id/item_borrowtime"
+        android:textSize="20sp"
+        android:textColor="#ff000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_returntime"
+        android:text="@string/history_book_returntime"
+        android:textSize="24sp"
+        android:textColor="#ff000000"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/returntime"
+        android:layout_toRightOf="@id/item_returntime"
+        android:textSize="20sp"
+        android:textColor="#ff000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_type"
+        android:text="@string/history_book_type"
+        android:textSize="24sp"
+        android:textColor="#ff000000"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/type"
+        android:layout_toRightOf="@id/item_type"
+        android:textSize="20sp"
+        android:textColor="#ff000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_loginnum"
+        android:text="@string/history_book_loginnum"
+        android:textSize="24sp"
+        android:textColor="#ff000000"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginnum"
+        android:layout_toRightOf="@id/item_loginnum"
+        android:textSize="20sp"
+        android:textColor="#ff000000"/>
+</LinearLayout>

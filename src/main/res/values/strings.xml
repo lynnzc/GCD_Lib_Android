@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GC书包</string>
+    <string name="version_name">1.0</string>
+    <string name="start_description">你的掌上图书馆</string>
+    <string name="enter_symbola">请输入搜索的书籍</string>
+    <string name="code_hint">请输入验证码</string>
+    <string name="search_btn">搜索</string>
+    <string name="no_book">没有找到合适的书籍</string>
+
+    <string name="item_num">序号: </string>
+    <string name="item_name">书名: </string>
+    <string name="item_publish">出版社: </string>
+    <string name="item_address">馆藏: </string>
+    <string name="item_isLent">是否可借: </string>
+    <string name="item_fetchnumber">索取号: </string>
+
+    <string name="search_book_num">序号: </string>
+    <string name="search_book_name">书名: </string>
+    <string name="search_book_author">作者: </string>
+    <string name="search_book_press">出版社: </string>
+    <string name="search_book_place">出版时间: </string>
+
+    <string name="student_name">姓名: </string>
+    <string name="student_cardnumber">学生证号: </string>
+    <string name="student_type">身份: </string>
+    <string name="student_college">学院: </string>
+    <string name="student_borrowState">借阅状态</string>
+    <string name="student_phonenumber">手机号: </string>
+    <string name="student_emailaddress">邮箱: </string>
+
+    <string name="loading">正在加载...</string>
+
+    <string-array name="menu_array">
+        <item>搜书</item>
+        <item>借阅</item>
+        <item>借书</item>
+        <item>收藏</item>
+    </string-array>
+
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+
+    <!--上拉控件-->
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="pullup_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="load">正在加载...</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+
+    <!--用户页-->
+    <string name="user_info">用户信息</string>
+    <string name="user_cardname">证 号:  </string>
+    <string name="user_name">姓 名:  </string>
+    <string name="user_type">类 型:  </string>
+    <string name="user_college">单 位:  </string>
+    <string name="user_borrowstate">借书状态:  </string>
+
+    <string name="pre_page_btn">上一页</string>
+    <string name="next_page_btn">下一页</string>
+
+    <!--借书状态-->
+    <string name="borrowed_book_name">书名/作者: </string>
+    <string name="borrowed_book_borrowtime">借书时间: </string>
+    <string name="borrowed_book_returntime">最迟还书时间: </string>
+
+    <!--借书历史-->
+    <string name="history_book_name">书名/作者: </string>
+    <string name="history_book_borrowtime">借书时间: </string>
+    <string name="history_book_returntime">还书时间: </string>
+    <string name="history_book_type">图书类型: </string>
+    <string name="history_book_loginnum">登陆号: </string>
+
+    <string name="codeprompt">看不清，点击图片</string>
+
+</resources>

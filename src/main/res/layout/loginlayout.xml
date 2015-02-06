@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ff51c286">
+    <ImageView
+        android:id="@+id/login_image"
+        android:background="@drawable/fillet_shape"
+        android:layout_width="96dip"
+        android:layout_height="96dip"
+        android:layout_marginTop="48dip"
+        android:layout_centerHorizontal="true" />
+    <EditText
+        android:background="@drawable/login_user"
+        android:id="@+id/user_login"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginLeft="48dip"
+        android:layout_marginRight="48dip"
+        android:layout_marginTop="16dip"
+        android:paddingLeft="52dip"
+        android:layout_below="@id/login_image"
+        android:singleLine="true"
+        android:inputType="number" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="账号:"
+        android:textSize="20sp"
+        android:textColor="#ff474747"
+        android:layout_marginTop="9dip"
+        android:layout_marginLeft="4dip"
+        android:layout_alignTop="@id/user_login"
+        android:layout_alignLeft="@id/user_login"/>
+    <EditText
+        android:id="@+id/password_login"
+        android:inputType="textPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:layout_marginLeft="48dip"
+        android:layout_marginRight="48dip"
+        android:paddingLeft="52dip"
+        android:singleLine="true"
+        android:layout_below="@id/user_login"
+        android:background="@drawable/login_pass"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="密码:"
+        android:textSize="20sp"
+        android:textColor="#ff474747"
+        android:layout_marginTop="9dip"
+        android:layout_marginLeft="4dip"
+        android:layout_alignTop="@id/password_login"
+        android:layout_alignLeft="@id/password_login" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkcodelayout"
+        android:layout_below="@id/password_login"
+        android:layout_marginTop="8dip"
+        android:layout_marginLeft="48dip"
+        android:layout_marginRight="48dip">
+        <EditText
+            android:layout_width="150dip"
+            android:layout_height="48dip"
+            android:id="@+id/codeinput"
+            android:background="@drawable/login_code"
+            android:hint="@string/code_hint"
+            android:singleLine="true"
+            android:paddingLeft="10dip"
+            android:layout_marginRight="10dip"/>
+        <ImageView
+            android:layout_width="150dip"
+            android:layout_height="48dip"
+            android:id="@+id/checkcode"
+            android:layout_toRightOf="@id/codeinput" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/r_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkcodelayout"
+        android:layout_alignLeft="@id/password_login"
+        android:textColor="#ffffff"
+        android:text="记住密码" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/codeprompt"
+        android:textColor="#ffffff"
+        android:layout_marginTop="8dip"
+        android:layout_marginLeft="58dip"
+        android:layout_below="@id/checkcodelayout"
+        android:layout_toRightOf="@id/r_pw"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:id="@+id/button_login"
+        android:background="@drawable/image_login"
+        android:text="登陆"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#ffd7efff"
+        android:layout_marginTop="16dip"
+        android:layout_alignRight="@id/user_login"
+        android:layout_alignLeft="@id/user_login"
+        android:layout_below="@id/r_pw" />
+</RelativeLayout>

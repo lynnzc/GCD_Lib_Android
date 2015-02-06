@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:test="http://schemas.android.com/apk/res-auto" >
+    <item
+        android:title="@string/app_name"
+        android:id="@+id/app_item1"
+        test:showAsAction="never"/>
+    <item
+        android:id="@+id/app_item2"
+        android:title="借阅"
+        test:showAsAction="never"/>
+    <item
+        android:id="@+id/app_item3"
+        android:title="借书"
+        test:showAsAction="never"/>
+    <item
+        android:id="@+id/app_item4"
+        android:title="收藏"
+        test:showAsAction="never"/>
+</menu>

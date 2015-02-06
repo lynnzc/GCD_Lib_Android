@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item_address"
+        android:textSize="18sp"
+        android:id="@+id/item_address" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_address"
+        android:textSize="18sp"
+        android:id="@+id/book_item_address" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item_fetchnumber"
+        android:textSize="18sp"
+        android:layout_below="@id/item_address"
+        android:id="@+id/item_fetchnumber" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_address"
+        android:layout_toRightOf="@id/item_fetchnumber"
+        android:textSize="18sp"
+        android:id="@+id/book_item_fetchnumber" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item_isLent"
+        android:textSize="18sp"
+        android:layout_below="@id/item_fetchnumber"
+        android:id="@+id/item_isLent" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_fetchnumber"
+        android:layout_toRightOf="@id/item_isLent"
+        android:textSize="18sp"
+        android:id="@+id/book_item_isLent" />
+</RelativeLayout>
