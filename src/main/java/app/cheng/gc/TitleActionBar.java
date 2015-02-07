@@ -19,8 +19,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import app.cheng.gc.Data.StudentInfo;
 import app.cheng.gc.Data.WebAddress;
@@ -45,6 +51,7 @@ public class TitleActionBar extends ActionBarActivity {
     private ActionBarDrawerToggle menuToggle;
     private ImageButton menu_btn;
     private ImageButton menu_btn_login;
+
     //用户名
     private TextView stu_info_item;
     private StudentInfo stu_info;
@@ -59,11 +66,7 @@ public class TitleActionBar extends ActionBarActivity {
         menuLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         menuLayout_left = (RelativeLayout)findViewById(R.id.menu_layout_left);
         menuList = (ListView)findViewById(R.id.menu_listView);
-
         menuTitle = getResources().getStringArray(R.array.menu_array);
-
-        menuList.setAdapter(new ArrayAdapter<String>(this, R.layout.menuitem, menuTitle));
-        menuList.setOnItemClickListener(new DrawerItemClickListener());
 
         //判断登陆
         Intent intent = getIntent();
@@ -80,7 +83,10 @@ public class TitleActionBar extends ActionBarActivity {
                 }
         }
 
+        setAdapter();
         initActionBar();
+
+        menuList.setOnItemClickListener(new DrawerItemClickListener());
 
         menuToggle = new ActionBarDrawerToggle(this, menuLayout, R.drawable.ic_tab_content_pressed,
                 R.string.drawer_open, R.string.drawer_close) {
@@ -179,6 +185,35 @@ public class TitleActionBar extends ActionBarActivity {
         }
     }
 
+    public void setAdapter() {
+        ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+        for(int i = 0 ; i < menuTitle.length ; i++) {
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            switch(i) {
+                case 0:
+                    map.put("item_image", R.drawable.icon1);
+                    break;
+                case 1:
+                    map.put("item_image", R.drawable.icon2);
+                    break;
+                case 2:
+                    map.put("item_image", R.drawable.icon3);
+                    break;
+                case 3:
+                    map.put("item_image", R.drawable.icon4);
+                    break;
+            }
+            map.put("item_text", menuTitle[i]);
+            list.add(map);
+        }
+        SimpleAdapter adapter = new SimpleAdapter(this, list,
+                R.layout.menuitem, new String[] {
+                "item_image", "item_text"
+        }, new int[] {R.id.menu_image, R.id.menu_item});
+
+        menuList.setAdapter(adapter);
+    }
+
     //<--------menu-------->
 
     public void setTitle(String title) {
@@ -221,7 +256,6 @@ public class TitleActionBar extends ActionBarActivity {
         }
         fragmentManager.beginTransaction().replace(R.id.menu_main, fragment).commit();
         menuList.setItemChecked(position, true);
-        //setTitle(menuTitle[position]);
         menuLayout.closeDrawer(menuLayout_left);
     }
 

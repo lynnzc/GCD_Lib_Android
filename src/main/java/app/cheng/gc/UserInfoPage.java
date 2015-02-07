@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import app.cheng.gc.Data.StudentInfo;
@@ -16,6 +18,8 @@ public class UserInfoPage extends ActionBarActivity {
     private StudentInfo stu_info;
     private TextView stu_name, stu_cardnumber, stu_type,
             stu_college, stu_borrowstate;
+    private ImageButton back_btn;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,7 @@ public class UserInfoPage extends ActionBarActivity {
         stu_type = (TextView)findViewById(R.id.user_type_text);
         stu_college = (TextView)findViewById(R.id.user_college_text);
         stu_borrowstate = (TextView)findViewById(R.id.user_borrowstate_text);
+
 
         Intent intent = getIntent();
         if(intent != null) {
@@ -52,6 +57,14 @@ public class UserInfoPage extends ActionBarActivity {
         actionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionbar.setDisplayShowCustomEnabled(true);
 
+
+        back_btn = (ImageButton)actionbar.getCustomView().findViewById(R.id.left_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         // 设置Actionbar背景
         actionbar.setBackgroundDrawable(
                 getResources().getDrawable(R.drawable.actionbar_bg));

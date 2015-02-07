@@ -5,7 +5,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ public class SearchItem extends ActionBarActivity {
     private TextView title;
     private Intent intent;
     private List<Map<String, String>> datalist;
+    private ImageButton back_btn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,14 @@ public class SearchItem extends ActionBarActivity {
         title = (TextView)actionbar.getCustomView().findViewById(R.id.title);
         title.setText("书籍详情");
 
+        back_btn = (ImageButton)actionbar.getCustomView().findViewById(R.id.left_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         // 设置Actionbar背景
         actionbar.setBackgroundDrawable(
                 getResources().getDrawable(R.drawable.actionbar_bg));
@@ -92,11 +103,12 @@ public class SearchItem extends ActionBarActivity {
                 map.put("address", searchBookInfo.getAddress());
                 map.put("fetchnumber", searchBookInfo.getFetchnumber());
                 map.put("isLent", searchBookInfo.IsLent());
+                System.out.println(searchBookInfo.IsLent() + "/searchBookInfo.IsLent()");
                 datalist.add(map);
             }
 
             SimpleAdapter adapter = new SimpleAdapter(SearchItem.this, datalist,
-                    R.layout.searchbookitem, new String[]{"address", "fetchnumber", "islent"}, new int []{
+                    R.layout.searchbookitem, new String[]{"address", "fetchnumber", "isLent"}, new int []{
                     R.id.book_item_address, R.id.book_item_fetchnumber, R.id.book_item_isLent});
             bookItemList.setAdapter(adapter);
             super.onPostExecute(searchBookInfoList);

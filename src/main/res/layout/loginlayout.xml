@@ -105,7 +105,7 @@
         android:text="登陆"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#ffd7efff"
+        android:textColor="#ff3d7d52"
         android:layout_marginTop="16dip"
         android:layout_alignRight="@id/user_login"
         android:layout_alignLeft="@id/user_login"

@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="48dip"
-    android:background="#fffbfffd"
-    android:id="@+id/menu_item"
-    android:layout_gravity="center"
-    android:textSize="26sp"
-    android:textColor="#ff000000"
-    android:paddingLeft="16dip"
-    android:padding="8dip"/>
+    android:orientation="horizontal"
+    android:id="@+id/menu_item_layout"
+    android:layout_marginTop="2dip"
+    android:layout_marginBottom="2dip">
+    <ImageView
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:id="@+id/menu_image"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:id="@+id/menu_item"
+        android:layout_gravity="center"
+        android:textSize="26sp"
+        android:textColor="#ff000000"
+        android:padding="8dip"
+        android:layout_marginLeft="16dip"/>
+</LinearLayout>
