@@ -62,6 +62,7 @@ public class ClientAPI {
     private String result;
 
     private int historypage = 1;
+    private int bookmarkpage = 1;
 
     private int n = 1; // searchpage count
 
@@ -395,6 +396,40 @@ public class ClientAPI {
         return getBorrowedHistory();
     }
 
+    public List<BorrowedBookInfo> getBookmarkInfo() {
+        HttpGet get = new HttpGet(WebAddress.BOOKMARK  + "?page=" + bookmarkpage);
+        addHttpGetHeader(get);
+        try {
+            HttpResponse hr = hc.execute(get);
+            HttpEntity entity = hr.getEntity();
+            String result = EntityUtils.toString(entity);
+
+            return Utils.getBookmark(result);
+        }
+        catch(ClientProtocolException e) {
+            e.printStackTrace();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<BorrowedBookInfo> nextBookmarkPage() {
+        if(bookmarkpage < Utils.getBorrowedMax()) {
+            bookmarkpage++;
+        }
+
+        return getBookmarkInfo();
+    }
+
+    public List<BorrowedBookInfo> preBookmarkPage() {
+        if(bookmarkpage > 1) {
+            bookmarkpage--;
+        }
+        return getBookmarkInfo();
+    }
+
     public List<BookInfo> searchBook(String method, String word) {
         return searchBook(method, word, 1); //first page
     }
@@ -471,4 +506,6 @@ public class ClientAPI {
         }
         return null;
     }
+
+
 }

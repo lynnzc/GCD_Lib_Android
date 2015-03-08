@@ -16,6 +16,7 @@ public class WebAddress {
     public final static String MODIFY_PAS = "http://lib.gdufe.edu.cn/opac/changepas.aspx";
     public final static String BOOKBORROWED = "http://lib.gdufe.edu.cn/opac/user/bookborrowed.aspx";
     public final static String BOOKBORROWEDHISTORY = "http://lib.gdufe.edu.cn/opac/user/bookborrowedhistory.aspx";
+    public final static String BOOKMARK = "http://lib.gdufe.edu.cn/opac/user/mybookshelf.aspx";
 
     public final static String USER_INFO_TRANS = "stu_info"; //用于传递用户信息
     public final static String USER_TRANS = "user_info";

@@ -179,6 +179,45 @@ public class Utils {
         return list_historybook;
     }
 
+    public static List<BorrowedBookInfo> getBookmark(String html) {
+        Document doc = Jsoup.parse(html);
+        borrowedMax = doc.getElementById("ctl00_cpRight_Pagination2_gotoddl2").
+                getElementsByTag("option").size();
+        Utils.setBorrowedMax(borrowedMax);
+
+        Elements eles = doc.getElementsByClass("tb");
+        List<BorrowedBookInfo> list_bookmark = new ArrayList<BorrowedBookInfo>();
+
+        for (Element e : eles) {
+            Elements list_es = e.getElementsByTag("tr");
+            for (int i = 1; i < list_es.size(); i++) {
+                //跳过第一行属性
+                Elements item_es = list_es.get(i).getElementsByTag("td");
+                BorrowedBookInfo bookmark_info = new BorrowedBookInfo();
+                for (int j = 0; j < item_es.size(); j++) {
+                    switch (j) {
+                        case 0:
+                            bookmark_info.setLogin_num(item_es.get(j).text());
+                            break;
+                        case 1:
+                            bookmark_info.setBookname(item_es.get(j).text());
+                            break;
+                        case 2:
+                            bookmark_info.setBorrow_date(item_es.get(j).text());
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                list_bookmark.add(bookmark_info);
+            }
+
+        }
+        return list_bookmark;
+    }
+
     public static List<BookInfo> getSearch(String html) {
         List<BookInfo> bookInfoList = new ArrayList<BookInfo>();
         Document doc = Jsoup.parse(html);

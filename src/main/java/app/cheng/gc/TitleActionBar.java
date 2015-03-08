@@ -30,6 +30,7 @@ import java.util.Map;
 
 import app.cheng.gc.Data.StudentInfo;
 import app.cheng.gc.Data.WebAddress;
+import app.cheng.gc.Fragment.BookmarkFragment;
 import app.cheng.gc.Fragment.BorrowedFragment;
 import app.cheng.gc.Fragment.HistoryFragment;
 import app.cheng.gc.Fragment.SearchFragment;
@@ -249,7 +250,7 @@ public class TitleActionBar extends ActionBarActivity {
                 fragment = new HistoryFragment();
                 break;
             case 3:
-                Toast.makeText(this, "还没做出来", Toast.LENGTH_SHORT).show();
+                fragment = new BookmarkFragment();
                 break;
             default:
                 break;

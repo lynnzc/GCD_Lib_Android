@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4951ffcc">
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/bookmarklist"
+        android:layout_marginBottom="48dip" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="48dip"
+        android:id="@+id/pre_page_btn"
+        android:layout_toEndOf="@id/bookmarklist"
+        android:layout_toRightOf="@id/bookmarklist"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/pre_page_btn"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="48dip"
+        android:layout_toEndOf="@id/bookmarklist"
+        android:layout_toRightOf="@id/pre_page_btn"
+        android:id="@+id/next_page_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/next_page_btn"/>
+</RelativeLayout>

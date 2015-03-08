@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4951ffcc">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_bookmark_num"
+        android:text="@string/bookmark_num"
+        android:textSize="24sp"
+        android:textColor="#ff000000"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookmark_num"
+        android:layout_toRightOf="@id/item_bookmark_num"
+        android:textSize="20sp"
+        android:textColor="#ff000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_bookmark_name"
+        android:text="@string/bookmark_name"
+        android:textSize="24sp"
+        android:textColor="#ff000000"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookmark_name"
+        android:layout_toRightOf="@id/item_bookmark_name"
+        android:textSize="20sp"
+        android:textColor="#ff000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_bookmark_marktime"
+        android:text="@string/bookmark_marktime"
+        android:textSize="24sp"
+        android:textColor="#ff000000"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookmark_marktime"
+        android:layout_toRightOf="@id/item_bookmark_marktime"
+        android:textSize="20sp"
+        android:textColor="#ff000000"/>
+</LinearLayout>

@@ -74,6 +74,11 @@
     <string name="history_book_type">图书类型: </string>
     <string name="history_book_loginnum">登陆号: </string>
 
+    <!--收藏-->
+    <string name="bookmark_num">序号: </string>
+    <string name="bookmark_name">书名: </string>
+    <string name="bookmark_marktime">收藏时间: </string>
+
     <string name="codeprompt">看不清，点击图片</string>
 
 </resources>

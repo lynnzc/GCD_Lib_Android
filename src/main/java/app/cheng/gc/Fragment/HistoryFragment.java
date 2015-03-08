@@ -47,7 +47,7 @@ public class HistoryFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     loadHistoryBookInfo = new LoadHistoryBookInfo();
-                    loadHistoryBookInfo.execute("下一页");
+                    loadHistoryBookInfo.execute("下一页", "上一页");
                 }
             });
 
@@ -55,7 +55,7 @@ public class HistoryFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     loadHistoryBookInfo = new LoadHistoryBookInfo();
-                    loadHistoryBookInfo.execute("下一页", "上一页");
+                    loadHistoryBookInfo.execute("下一页");
                 }
             });
             loadHistoryBookInfo = new LoadHistoryBookInfo();
