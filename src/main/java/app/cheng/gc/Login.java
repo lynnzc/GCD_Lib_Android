@@ -38,10 +38,9 @@ public class Login extends Activity {
     private ImageView checkcode;
     private Button login_btn;
 
-    private byte[] imagedata = null;
+    private byte[] imagedata = null; //checkcode image
 
     private ClientAPI client = new ClientAPI();
-    private CookieStore cookiestore;
 
     private final static int MSG_SUCCESS = 1; //获取验证码成功
     private final static int MSG_FAILURE = 0; //获取验证码失败
@@ -91,8 +90,7 @@ public class Login extends Activity {
                         public void run() {
                             StudentInfo stu_info = new StudentInfo();
                             client.setParams(userValue, passValue, checkcodeValue);
-
-                            //client.Get();
+                            //client.Get(); //获取cookie
                             int statue = client.Login();
 
                             if (statue == 1) {
@@ -161,7 +159,7 @@ public class Login extends Activity {
     Runnable runnable = new Runnable() {
         public void run() {
             try {
-                client.Get(); //取得cookie
+                //client.Get(); //取得cookie
 
                 imagedata = client.GetCode(); //获得验证码
                 Bitmap bitmap = BitmapFactory.decodeByteArray(

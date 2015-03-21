@@ -8,6 +8,8 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.cheng.gc.Data.BookInfo;
 import app.cheng.gc.Data.BorrowedBookInfo;
@@ -193,13 +195,21 @@ public class Utils {
             for (int i = 1; i < list_es.size(); i++) {
                 //跳过第一行属性
                 Elements item_es = list_es.get(i).getElementsByTag("td");
+                Elements link = list_es.get(i).getElementsByTag("a"); //获取地址
                 BorrowedBookInfo bookmark_info = new BorrowedBookInfo();
+
+                String path = link.attr("href"); //相对地址
+                System.out.println(path + "/相对地址"); //测试
+                bookmark_info.setSearchnum(Utils.catch_searchnum(path)); //获得搜索码
+                System.out.println(bookmark_info.getSearchnum() + "搜索码"); //测试
+
                 for (int j = 0; j < item_es.size(); j++) {
                     switch (j) {
                         case 0:
                             bookmark_info.setLogin_num(item_es.get(j).text());
                             break;
                         case 1:
+
                             bookmark_info.setBookname(item_es.get(j).text());
                             break;
                         case 2:
@@ -218,14 +228,22 @@ public class Utils {
         return list_bookmark;
     }
 
+    private static String catch_searchnum(String str) {
+        String regex = "[0-9]{6}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+        if(matcher.find()) {
+            return matcher.group();
+        }
+        return null;
+    }
+
     public static List<BookInfo> getSearch(String html) {
         List<BookInfo> bookInfoList = new ArrayList<BookInfo>();
         Document doc = Jsoup.parse(html);
 
         searchNum = Integer.parseInt(doc.getElementById
                 ("ctl00_ContentPlaceHolder1_countlbl").text()); //查找的总数
-
-        System.out.println("searchNum: " + searchNum); //测试
 
         if(searchNum == 0) {
             return null;
@@ -277,7 +295,7 @@ public class Utils {
     public static List<SearchBookInfo> getSearchBookInfo(String html) {
         List<SearchBookInfo> sbookinfoList = new ArrayList<SearchBookInfo>();
         Document doc = Jsoup.parse(html);
-        System.out.println(html + "/html");
+
         Elements eles = doc.getElementById("bardiv").getElementsByTag("tr");
 
         for(int i = 1 ; i < eles.size() ; i++) {

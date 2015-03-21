@@ -13,7 +13,7 @@
             android:id="@+id/search_text"
             android:hint="@string/enter_symbola"
             android:textSize="18sp"
-            android:textColor="#ffffff"
+            android:textColor="#ff000000"
             android:singleLine="true"
             android:imeOptions="actionSearch"
             android:editable="true"

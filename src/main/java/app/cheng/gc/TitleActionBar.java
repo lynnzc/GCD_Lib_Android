@@ -207,6 +207,7 @@ public class TitleActionBar extends ActionBarActivity {
             map.put("item_text", menuTitle[i]);
             list.add(map);
         }
+
         SimpleAdapter adapter = new SimpleAdapter(this, list,
                 R.layout.menuitem, new String[] {
                 "item_image", "item_text"

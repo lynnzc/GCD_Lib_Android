@@ -9,6 +9,11 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/historylist"
+        android:layout_marginTop="5dip"
+        android:choiceMode="singleChoice"
+        android:divider="#000000"
+        android:dividerHeight="1px"
+        android:footerDividersEnabled="true"
         android:layout_marginBottom="48dip" />
     <Button
         android:layout_width="wrap_content"

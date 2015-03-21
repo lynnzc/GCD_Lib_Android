@@ -171,10 +171,11 @@ public class SearchFragment extends Fragment {
         protected void onPostExecute(List<BookInfo> bookInfoList) {
             if(bookInfoList != null) {
                 if (firstload) {
+                    //首次加载刷新列表
                     num = Utils.getSearchNum(); //总数
                     currentnum = 20 > (int) num ? (int) num : 20; //加载最多20条，少于20条加载完
                     System.out.println("num" + (int) num);//测试
-                    //首次加载刷新列表
+
                     datalist = new ArrayList<Map<String, String>>();
                     adapter = new SimpleAdapter(getActivity().getApplicationContext(),
                             datalist,
@@ -237,7 +238,7 @@ public class SearchFragment extends Fragment {
             }
             else {
                 Toast.makeText(getActivity().getApplicationContext(),
-                        "没有找到合适的书籍", Toast.LENGTH_LONG);
+                        "没有找到合适的书籍", Toast.LENGTH_LONG).show();
             }
 
             super.onPostExecute(bookInfoList);

@@ -11,6 +11,7 @@ public class BorrowedBookInfo {
     // 图书类型，一般为中文图书
     private String type;
     private String login_num;
+    private String searchnum;
 
     public String getBorrow_date() {
         return borrow_date;
@@ -60,5 +61,12 @@ public class BorrowedBookInfo {
         this.login_num = login_num;
     }
 
+    public String getSearchnum() {
+        return this.searchnum;
+    }
+
+    public void setSearchnum(String bookpage) {
+        this.searchnum = bookpage;
+    }
 }
 

@@ -39,7 +39,7 @@ public class SearchItem extends ActionBarActivity {
         setContentView(R.layout.searchbookitemlayout);
 
         intent = getIntent();
-        System.out.println("成功传递: " + intent.getStringExtra("serialnum")); //测试
+        //System.out.println("成功传递: " + intent.getStringExtra("serialnum")); //测试
 
         initActionBar();
 
@@ -76,7 +76,7 @@ public class SearchItem extends ActionBarActivity {
             public void onClick(View v) {
                 finish();
             }
-        });
+        }); //backspace
 
         // 设置Actionbar背景
         actionbar.setBackgroundDrawable(
@@ -103,7 +103,7 @@ public class SearchItem extends ActionBarActivity {
                 map.put("address", searchBookInfo.getAddress());
                 map.put("fetchnumber", searchBookInfo.getFetchnumber());
                 map.put("isLent", searchBookInfo.IsLent());
-                System.out.println(searchBookInfo.IsLent() + "/searchBookInfo.IsLent()");
+                System.out.println(searchBookInfo.IsLent() + "/searchBookInfo.IsLent()"); //测试
                 datalist.add(map);
             }
 

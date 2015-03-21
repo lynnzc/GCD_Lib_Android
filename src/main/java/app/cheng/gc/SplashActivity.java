@@ -14,6 +14,7 @@ import android.view.Window;
 */
 public class SplashActivity extends Activity {
      private static final int SHOW_TIME = 2000;
+     ClientAPI client = new ClientAPI();
      //开机动画
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,13 @@ public class SplashActivity extends Activity {
              new Handler().postDelayed(new Runnable() {
                      @Override
                      public void run() {
+                             new Thread() {
+                                 public void run() {
+                                     client.Get();
+                                 }
+                             }.start();
+
+
                              Intent intent = new Intent();
                              intent.setClass(SplashActivity.this, TitleActionBar.class);
                              startActivity(intent);

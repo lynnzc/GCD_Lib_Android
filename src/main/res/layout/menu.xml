@@ -27,14 +27,17 @@
             android:layout_height="48dip"
             android:textColor="#000000"
             android:textSize="24sp"
+            android:gravity="center"
+            android:layout_marginRight="5dip"
             android:id="@+id/student_info_item"/>
         <ListView
             android:id="@+id/menu_listView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_marginTop="5dip"
             android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"
+            android:divider="#ff959595"
+            android:dividerHeight="1dp"
             android:layout_below="@id/student_info_item" >
         </ListView>
     </RelativeLayout>

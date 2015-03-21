@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     android:background="#4951ffcc">
     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookmark_searchnum"
+        android:visibility="gone" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/item_bookmark_num"

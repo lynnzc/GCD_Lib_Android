@@ -448,7 +448,7 @@ public class ClientAPI {
         params.add(new BasicNameValuePair("ob", "DESC"));
         params.add(new BasicNameValuePair("sm", "table"));
         params.add(new BasicNameValuePair("dept", "ALL"));
-        params.add(new BasicNameValuePair("page", page+"")); //n page
+        params.add(new BasicNameValuePair("page", page+"")); //n-th page
         URI uri;
 
         try {
@@ -474,19 +474,6 @@ public class ClientAPI {
 
         return null;
     }
-
-    /*
-    public List<BookInfo> nextSearchPage() {
-        double page = Utils.getSearchNum();
-        if(n <= Math.ceil(page/20) ) {
-            n++;
-            return searchBook(method, word);
-        }
-        else {
-            return null;
-        }
-    }
-    */
 
     public List<SearchBookInfo> SearchBookInfo(String num) {
         HttpClient hc = new DefaultHttpClient();
