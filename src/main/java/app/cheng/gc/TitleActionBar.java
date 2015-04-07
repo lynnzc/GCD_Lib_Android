@@ -9,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,6 +28,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import app.cheng.gc.Data.StudentInfo;
 import app.cheng.gc.Data.WebAddress;
@@ -57,6 +60,10 @@ public class TitleActionBar extends ActionBarActivity {
     private TextView stu_info_item;
     private StudentInfo stu_info;
 
+    //判别退出
+    private static boolean isExit= false;
+
+    ClientAPI client = new ClientAPI();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,8 +186,16 @@ public class TitleActionBar extends ActionBarActivity {
             menu_btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                    startActivity(intent);
+                    try {
+                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                        startActivity(intent);
+                    }
+                    catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                    finally {
+                        finish();
+                    }
                 }
             });
         }
@@ -216,6 +231,34 @@ public class TitleActionBar extends ActionBarActivity {
         menuList.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            exitByTwoClick();
+        }
+        return false;
+    }
+
+    private void exitByTwoClick() {
+        Timer tExit = null;
+        if(isExit == false) {
+            isExit = true;
+            Toast.makeText(this, "再按一次退出程序!", Toast.LENGTH_LONG)
+                    .show();
+            tExit = new Timer();
+            tExit.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false; //过了时间取消退出
+                }
+            }, 2000); //两秒内没有按下定时器，则不能退出
+        }
+        else {
+            //退出程序
+            finish();
+            System.exit(0);
+        }
+    }
     //<--------menu-------->
 
     public void setTitle(String title) {

@@ -8,13 +8,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 
+import app.cheng.gc.Data.WebAddress;
+
 
 /**
 * Created by lynnlyf on 2015/2/2.
 */
 public class SplashActivity extends Activity {
      private static final int SHOW_TIME = 2000;
-     ClientAPI client = new ClientAPI();
+     private ClientAPI client = new ClientAPI();
      //开机动画
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +25,15 @@ public class SplashActivity extends Activity {
              this.requestWindowFeature(Window.FEATURE_NO_TITLE);
              setContentView(R.layout.jiemian);
 
+             WebAddress.checkNetwork(this);
+             new Thread() {
+                 public void run() {
+                     client.Get(); //获得网页cookie
+                 }
+             }.start();
              new Handler().postDelayed(new Runnable() {
                      @Override
                      public void run() {
-                             new Thread() {
-                                 public void run() {
-                                     client.Get();
-                                 }
-                             }.start();
-
 
                              Intent intent = new Intent();
                              intent.setClass(SplashActivity.this, TitleActionBar.class);
@@ -42,13 +44,4 @@ public class SplashActivity extends Activity {
                          }
                  }, SHOW_TIME);
          }
-     //检查网络连接状态
-     private boolean isOpenNetwork() {
-         ConnectivityManager connectivityManager =
-                        (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-         if(connectivityManager.getActiveNetworkInfo() != null) {
-            return connectivityManager.getActiveNetworkInfo().isAvailable();
-         }
-         return false;
-     }
 }

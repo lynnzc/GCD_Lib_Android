@@ -33,8 +33,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,8 +149,7 @@ public class ClientAPI {
             else {
                 System.out.println("获取验证码失败//");
             }
-        }
-        catch(ClientProtocolException e){
+        }catch(ClientProtocolException e){
             e.printStackTrace();
         }
         catch(IOException e) {

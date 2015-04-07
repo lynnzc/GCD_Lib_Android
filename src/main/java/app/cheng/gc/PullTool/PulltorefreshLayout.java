@@ -32,14 +32,13 @@ import app.cheng.gc.R;
 public class PulltorefreshLayout extends RelativeLayout {
     // 初始状态
     public static final int INIT = 0;
-
     // 释放加载
     public static final int RELEASE_TO_LOAD = 3;
     // 正在加载
     public static final int LOADING = 4;
-
     // 操作完毕
     public static final int DONE = 5;
+
     // 当前状态,开始为初始状态
     private int state = INIT;
 
@@ -49,8 +48,10 @@ public class PulltorefreshLayout extends RelativeLayout {
     public static final int SUCCEED = 0;
     //加载刷新失败
     public static final int FAIL = 1;
+
     // 按下Y坐标，上一个事件点Y坐标
     private float downY, lastY;
+
     // 上拉的距离
     private float pullUpY = 0;
     // 释放加载的距离
@@ -112,9 +113,10 @@ public class PulltorefreshLayout extends RelativeLayout {
             MOVE_SPEED = (float) (8 + 5 * Math.tan(Math.PI / 2
                     / getMeasuredHeight() * (Math.abs(pullUpY)))); //上拉回弹速度
             if (!isTouch) {
+                //拉动
                 if (state == LOADING && -pullUpY <= loadmoreDist) {
                     pullUpY = -loadmoreDist;
-                    timer.cancel();
+                    timer.cancel(); //清空
                 }
             }
 
@@ -123,14 +125,14 @@ public class PulltorefreshLayout extends RelativeLayout {
             }
 
             if (pullUpY > 0) {
-                // 已完成回弹
+                //结束拉动
                 pullUpY = 0;
 
                 pullUpView.clearAnimation();
 
                 if (state != LOADING)
                     changeState(INIT);
-                timer.cancel();
+                timer.cancel(); //清空
             }
             // 刷新布局,会自动调用onLayout
             requestLayout();
@@ -166,9 +168,9 @@ public class PulltorefreshLayout extends RelativeLayout {
      *            PullToRefreshLayout.SUCCEED代表成功，PullToRefreshLayout.FAIL代表失败
      */
     public void loadmoreFinish(int refreshResult) {
-        loadingView.clearAnimation();
-        loadingView.setVisibility(View.GONE);
-        switch (refreshResult) {
+        loadingView.clearAnimation(); //清除加载动画
+        loadingView.setVisibility(View.GONE); //加载中图片不可见
+        switch (refreshResult) { //切换加载后状态
             case SUCCEED:
                 // 加载成功
                 loadStateImageView.setVisibility(View.VISIBLE);
@@ -250,7 +252,6 @@ public class PulltorefreshLayout extends RelativeLayout {
                         pullUpY = pullUpY + (event.getY() - lastY) / radio;
                         if (pullUpY > 0) {
                             pullUpY = 0;
-                            //canPullDown = true;
                             canPullUp = false;
                         }
                         if (pullUpY < -getMeasuredHeight()) {
@@ -267,13 +268,14 @@ public class PulltorefreshLayout extends RelativeLayout {
                     mEvents = 0;
                 }
                 lastY = event.getY();
-                // 根据下拉距离改变比例
+                // 根据上拉距离改变比例
                 radio = (float) (2 + 2 * Math.tan(Math.PI / 2 / getMeasuredHeight()
                         * ( Math.abs(pullUpY))));
                 requestLayout();
 
                 if (pullUpY < 0) {
                     //判断上拉加载，注意pullUpY是负值
+                    //上拉释放后，若大于可加载高度则释放加载，否则还原
                     if (-pullUpY <= loadmoreDist
                             && (state == RELEASE_TO_LOAD || state == DONE)) {
                         changeState(INIT);
@@ -286,7 +288,7 @@ public class PulltorefreshLayout extends RelativeLayout {
                 }
                 // Math.abs(pullUpY) ,pullUpY是负值
                 if ((Math.abs(pullUpY) ) > 8) {
-                    // 防止下拉过程中误触发长按事件或者点击事件
+                    // 防止上拉后加载过程中误触发长按事件或者点击事件
                     event.setAction(MotionEvent.ACTION_CANCEL);
                 }
                 break;

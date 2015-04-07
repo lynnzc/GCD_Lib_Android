@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:orientation="vertical"
     android:id="@+id/list_container">
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_view">
+        android:id="@+id/search_view"
+        android:layout_marginBottom="5dip">
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="48dip"
@@ -47,28 +49,14 @@
             android:background="#ffffff"
             android:divider="#ffa3a3a3"
             android:dividerHeight="1dp"
-            android:layout_marginTop="5dip"
             android:choiceMode="singleChoice"
-            android:orientation="horizontal"
             android:layout_below="@id/search_view"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:footerDividersEnabled="true" />
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true" />
         <include layout="@layout/load_more" />
 
     </app.cheng.gc.PullTool.PulltorefreshLayout>
-    <!--<ListView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="5dip"
-        android:choiceMode="singleChoice"
-        android:id="@+id/listBook"
-        android:orientation="horizontal"
-        android:layout_below="@id/search_view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:divider="#000000"
-        android:dividerHeight="1px"
-        android:footerDividersEnabled="true">
-    </ListView> -->
-</RelativeLayout>
+
+</LinearLayout>
