@@ -41,7 +41,7 @@ import app.cheng.gc.Fragment.SearchFragment;
 /**
  * Created by lynnlyf on 2015/2/2.
  */
-public class TitleActionBar extends ActionBarActivity {
+public class TitleActionBar extends BaseActivity {
 
     //menu title
     private String[] menuTitle;
@@ -58,7 +58,7 @@ public class TitleActionBar extends ActionBarActivity {
 
     //用户名
     private TextView stu_info_item;
-    private StudentInfo stu_info;
+    private StudentInfo stu_info = null;
 
     //判别退出
     private static boolean isExit= false;
@@ -83,8 +83,6 @@ public class TitleActionBar extends ActionBarActivity {
                 stu_info = (StudentInfo)intent.getSerializableExtra(WebAddress.USER_INFO_TRANS);
                 if (stu_info != null) {
                     stu_info_item.setText(stu_info.getName());
-                    System.out.println("成功传递: " + stu_info.getName()); //测试
-                    WebAddress.state = true;
                 }
                 else {
                     System.out.println("没有传递或传递失败");
@@ -186,16 +184,8 @@ public class TitleActionBar extends ActionBarActivity {
             menu_btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    try {
-                        Intent intent = new Intent(getApplicationContext(), Login.class);
-                        startActivity(intent);
-                    }
-                    catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                    finally {
-                        finish();
-                    }
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
                 }
             });
         }
@@ -255,8 +245,7 @@ public class TitleActionBar extends ActionBarActivity {
         }
         else {
             //退出程序
-            finish();
-            System.exit(0);
+            ApplicationStack.getInstance().exit();
         }
     }
     //<--------menu-------->
@@ -342,9 +331,16 @@ public class TitleActionBar extends ActionBarActivity {
             return true;
         }
 
-
         return super.onOptionsItemSelected(item);
     }
     //<--------menu-------->
 
+    @Override
+    protected void onDestroy() {
+        if(WebAddress.state) {
+            //已经登陆
+            finish();
+        }
+        super.onDestroy();
+    }
 }

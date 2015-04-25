@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -28,7 +29,7 @@ import app.cheng.gc.Data.WebAddress;
 /**
  * Created by lynnlyf on 2015/2/2.
  */
-public class Login extends Activity {
+public class Login extends BaseActivity {
     private EditText username, password;
     private CheckBox rem_pw;
     private String userValue, passValue, checkcodeValue;
@@ -48,10 +49,8 @@ public class Login extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //去标题
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.loginlayout);
+        getSupportActionBar().hide();
 
         sp = this.getSharedPreferences("cookie", Context.MODE_APPEND);
 
@@ -109,10 +108,12 @@ public class Login extends Activity {
                                     sp.edit().clear();
                                 }
 
-                                System.out.println(stu_info.getName()+ "/姓名");
+                                //System.out.println(stu_info.getName()+ "/姓名");
                                 Intent intent = new Intent(Login.this, TitleActionBar.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable(WebAddress.USER_INFO_TRANS, stu_info);
+                                WebAddress.state = true;
                                 intent.putExtras(bundle); //绑定
                                 startActivity(intent);
                                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -159,7 +160,10 @@ public class Login extends Activity {
     Runnable runnable = new Runnable() {
         public void run() {
             try {
-                //client.Get(); //取得cookie
+                if(!WebAddress.isCookieGet) {
+                    WebAddress.state = true;
+                    client.Get(); //如果没有获取cookie,先获取网页cookie
+                }
 
                 imagedata = client.GetCode(); //获得验证码
                 Bitmap bitmap = BitmapFactory.decodeByteArray(

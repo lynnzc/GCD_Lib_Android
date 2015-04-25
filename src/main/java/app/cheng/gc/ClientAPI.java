@@ -103,7 +103,7 @@ public class ClientAPI {
         this.password = password;
         this.checkcode = checkcode;
     }
-
+    /*
     public void getCookieStore() {
         cookiestore = ((AbstractHttpClient) hc).getCookieStore(); //网页Cookie
     }
@@ -113,7 +113,7 @@ public class ClientAPI {
 
         ((AbstractHttpClient) hc).setCookieStore(cookiestore);
         System.out.println( ((AbstractHttpClient) hc).getCookieStore().getCookies() + "/cookie");
-    }
+    }*/
 
     public byte[] GetCode() {
         //HttpClient hc = new DefaultHttpClient();
@@ -179,13 +179,9 @@ public class ClientAPI {
             __VIEWSTATE = Utils.get__VIEWSTATE();
             __EVENTVALIDATION = Utils.get__EVENTVALIDATION();
 
-            //System.out.println(result + "/result 1  "); //测试
-
-            System.out.println(__VIEWSTATE + "/ __VIEWSTATE"); //测试
-            System.out.println(__EVENTVALIDATION + "/__EVENTVALIDATION"); //测试
-
-
-
+            //System.out.println(__VIEWSTATE + "/ __VIEWSTATE"); //测试
+            //System.out.println(__EVENTVALIDATION + "/__EVENTVALIDATION"); //测试
+            WebAddress.isCookieGet = true;
         }
         catch(ClientProtocolException e) {
             e.printStackTrace();
@@ -204,9 +200,7 @@ public class ClientAPI {
             HttpResponse hr = hc.execute(get);
             HttpEntity h_entity = hr.getEntity();
 
-            //System.out.println(h_entity + "/html"); //测试
             result = EntityUtils.toString(h_entity); //结果页
-            //System.out.println(result + "/html"); //测试
             sif = Utils.getInfo(result);
         }
         catch(ClientProtocolException e) {
@@ -237,7 +231,6 @@ public class ClientAPI {
         params.add(new BasicNameValuePair("__EVENTTARGET", "")); //default
         params.add(new BasicNameValuePair("__LASTFOCUS", ""));
         params.add(new BasicNameValuePair("ctl00$ContentPlaceHolder1$txtCode", checkcode)); //验证码
-        System.out.println(checkcode + "/checkcode"); //测试
         params.add(new BasicNameValuePair("ctl00$ContentPlaceHolder1$btnLogin_Lib", "登录")); //登录
         params.add(new BasicNameValuePair("ctl00$ContentPlaceHolder1$txtlogintype", "0"));
         params.add(new BasicNameValuePair("__EVENTVALIDATION", __EVENTVALIDATION));
@@ -266,19 +259,16 @@ public class ClientAPI {
             HttpEntity result_entity = he.getEntity(); //返回结果
 
             result = EntityUtils.toString(result_entity); //结果页
-            //System.out.println(result + " /result 2  "); //测试
 
             statue = he.getStatusLine().getStatusCode(); //状态码,302为成功,500失败，200账号密码错误
 
-            System.out.println(statue + " /statue"); //测试
+            //System.out.println(statue + " /statue"); //测试
 
             if(statue == 302) {
-                System.out.println("成功登陆"); //测试
-
+                //System.out.println("成功登陆"); //测试
             }
             else if(statue == 200) {
                 //输入有误，连接成功
-
                 return -1;
             }
             else {
@@ -457,11 +447,9 @@ public class ClientAPI {
             uri = URIUtils.createURI("http", WebAddress.HOST,
                     -1, "/searchresult.aspx", URLEncodedUtils.format(params, "GBK"), null);
             HttpGet get = new HttpGet(uri);
-            //System.out.println(get.getURI());//测试
             addHttpGetHeader(get);
             HttpResponse hr = hc.execute(get);
             HttpEntity entity = hr.getEntity();
-            //System.out.println(EntityUtils.toString(entity)); //测试
             return Utils.getSearch(EntityUtils.toString(entity));
         }
         catch(ClientProtocolException e) {

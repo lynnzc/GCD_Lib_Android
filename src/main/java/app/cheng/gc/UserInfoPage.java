@@ -14,7 +14,7 @@ import app.cheng.gc.Data.WebAddress;
 /**
  * Created by lynnlyf on 2015/2/4.
  */
-public class UserInfoPage extends ActionBarActivity {
+public class UserInfoPage extends BaseActivity {
     private StudentInfo stu_info;
     private TextView stu_name, stu_cardnumber, stu_type,
             stu_college, stu_borrowstate;

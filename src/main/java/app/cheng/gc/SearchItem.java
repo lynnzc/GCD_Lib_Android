@@ -23,7 +23,7 @@ import app.cheng.gc.Data.SearchBookInfo;
 /**
  * Created by lynnlyf on 2015/2/2.
  */
-public class SearchItem extends ActionBarActivity {
+public class SearchItem extends BaseActivity {
     private ListView bookItemList;
     private TextView book_item_name;
     private TextView book_item_num;

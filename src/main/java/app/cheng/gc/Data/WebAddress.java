@@ -3,6 +3,7 @@ package app.cheng.gc.Data;
 import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.widget.Toast;
 
 import app.cheng.gc.ClientAPI;
@@ -28,20 +29,19 @@ public class WebAddress {
     public final static String COOKIE_STORE = "cookie_store"; //cookie
 
     public static Boolean state = false; //登录状态
+    public static Boolean isCookieGet = false; //是否获取了cookie
 
     //检查网络连接状态
     private static boolean isOpenNetwork(final Activity activity) {
         Context context = activity.getApplicationContext();
         ConnectivityManager connectivityManager =
                 (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager.getActiveNetworkInfo() != null) {
-            return connectivityManager.getActiveNetworkInfo().isAvailable();
-        }
-        return false;
+        final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+        return info != null && info.isConnectedOrConnecting();
     }
 
     public static void checkNetwork(final Activity activity) {
-        if(isOpenNetwork(activity)) {
+        if(!isOpenNetwork(activity)) {
             Toast.makeText(activity,
                     "当前网络网络异常，请检查网络设置", Toast.LENGTH_LONG).show();
         }
