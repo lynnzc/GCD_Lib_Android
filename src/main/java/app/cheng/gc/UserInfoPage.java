@@ -57,7 +57,6 @@ public class UserInfoPage extends BaseActivity {
         actionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionbar.setDisplayShowCustomEnabled(true);
 
-
         back_btn = (ImageButton)actionbar.getCustomView().findViewById(R.id.left_btn);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -27,11 +27,10 @@
             android:layout_width="48dip"
             android:layout_height="48dip"
             android:id="@+id/search_button"
-            android:background="@drawable/search_btn"
+            android:background="@drawable/search_btn_action"
             android:text="@string/search_btn"
             android:padding="0dip"
             android:textSize="16sp"
-            android:textStyle="bold"
             android:textColor="#ffffffff"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@id/search_text" />

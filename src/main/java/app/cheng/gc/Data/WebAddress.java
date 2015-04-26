@@ -23,10 +23,10 @@ public class WebAddress {
     public final static String BOOKBORROWED = "http://lib.gdufe.edu.cn/opac/user/bookborrowed.aspx";
     public final static String BOOKBORROWEDHISTORY = "http://lib.gdufe.edu.cn/opac/user/bookborrowedhistory.aspx";
     public final static String BOOKMARK = "http://lib.gdufe.edu.cn/opac/user/mybookshelf.aspx";
-
+    //用于传递数据的Key
     public final static String USER_INFO_TRANS = "stu_info"; //用于传递用户信息
     public final static String USER_TRANS = "user_info";
-    public final static String COOKIE_STORE = "cookie_store"; //cookie
+    //public final static String COOKIE_STORE = "cookie_store"; //cookie
 
     public static Boolean state = false; //登录状态
     public static Boolean isCookieGet = false; //是否获取了cookie

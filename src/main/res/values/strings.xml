@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">GC书包</string>
+    <string name="app_name">广财书包</string>
     <string name="version_name">1.0</string>
-    <string name="start_description">你的掌上图书馆</string>
+    <string name="start_description">掌上图书馆</string>
     <string name="enter_symbola">请输入搜索的书籍</string>
     <string name="code_hint">请输入验证码</string>
     <string name="search_btn">搜索</string>
@@ -81,4 +81,7 @@
 
     <string name="codeprompt">看不清，点击图片</string>
 
+    <!--登陆-->
+    <string name="user">账号:</string>
+    <string name="pass">密码:</string>
 </resources>

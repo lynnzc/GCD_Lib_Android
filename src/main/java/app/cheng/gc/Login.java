@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
@@ -17,7 +18,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.client.CookieStore;
@@ -39,6 +42,9 @@ public class Login extends BaseActivity {
     private ImageView checkcode;
     private Button login_btn;
 
+    private TextView title;
+    private ImageButton back_btn;
+
     private byte[] imagedata = null; //checkcode image
 
     private ClientAPI client = new ClientAPI();
@@ -50,9 +56,6 @@ public class Login extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginlayout);
-        getSupportActionBar().hide();
-
-        sp = this.getSharedPreferences("cookie", Context.MODE_APPEND);
 
         username = (EditText)findViewById(R.id.user_login);
         password = (EditText)findViewById(R.id.password_login);
@@ -62,9 +65,21 @@ public class Login extends BaseActivity {
         codeinput = (EditText)findViewById(R.id.codeinput);
         checkcode = (ImageView)findViewById(R.id.checkcode);
 
+        initActionBar();
+
         new Thread(runnable) {
         }.start();
 
+        checkcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击验证码图片，重新获取验证码
+                new Thread(runnable) {
+                }.start();
+            }
+        });
+
+        sp = this.getSharedPreferences("user_pass", Context.MODE_APPEND);
         if(sp.getBoolean("ISCHECK", true)) {
             rem_pw.setChecked(true);
             username.setText(sp.getString("username", userValue));
@@ -136,23 +151,15 @@ public class Login extends BaseActivity {
         rem_pw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(rem_pw.isChecked()) {
-                    System.out.println("记住密码已选");
+                    //System.out.println("记住密码已选");
                     sp.edit().putBoolean("ISCHECK", true).commit();
                 }
                 else {
-                    System.out.println("记住密码没有选中");
+                    //System.out.println("记住密码没有选中");
                     sp.edit().putBoolean("ISCHECK", false).commit();
                 }
             }
 
-        });
-
-        checkcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread(runnable) {
-                }.start();
-            }
         });
 
     }
@@ -177,6 +184,32 @@ public class Login extends BaseActivity {
             }
         }
     };
+
+    private void initActionBar() {
+        ActionBar actionbar = getSupportActionBar();
+
+        // 可以自定义actionbar
+        actionbar.setCustomView(R.layout.actionbar_view_user);
+        actionbar.setDisplayShowTitleEnabled(false);
+        actionbar.setDisplayShowHomeEnabled(false);
+        actionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionbar.setDisplayShowCustomEnabled(true);
+
+        title = (TextView)actionbar.getCustomView().findViewById(R.id.title);
+        title.setText("登陆");
+
+        back_btn = (ImageButton)actionbar.getCustomView().findViewById(R.id.left_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        }); //backspace
+
+        // 设置Actionbar背景
+        actionbar.setBackgroundDrawable(
+                getResources().getDrawable(R.drawable.actionbar_bg));
+    }
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {

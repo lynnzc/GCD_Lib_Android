@@ -55,15 +55,15 @@ public class TitleActionBar extends BaseActivity {
     private ActionBarDrawerToggle menuToggle;
     private ImageButton menu_btn;
     private ImageButton menu_btn_login;
-
     //用户名
     private TextView stu_info_item;
+
     private StudentInfo stu_info = null;
 
     //判别退出
     private static boolean isExit= false;
 
-    ClientAPI client = new ClientAPI();
+    //ClientAPI client = new ClientAPI();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,21 +143,18 @@ public class TitleActionBar extends BaseActivity {
 
     private void initActionBar() {
         ActionBar actionbar = getSupportActionBar();
-
         // 可以自定义actionbar
         actionbar.setCustomView(R.layout.actionbar_view);
         actionbar.setDisplayShowTitleEnabled(false);
         actionbar.setDisplayShowHomeEnabled(false);
         actionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionbar.setDisplayShowCustomEnabled(true);
-
         // 设置Actionbar背景
         actionbar.setBackgroundDrawable(
                 getResources().getDrawable(R.drawable.actionbar_bg));
 
         menu_btn = (ImageButton) findViewById(R.id.left_btn);
         menu_btn_login = (ImageButton)findViewById(R.id.left_nologin_btn);
-
         //登陆前后
         if(WebAddress.state) {
             menu_btn_login.setVisibility(View.GONE);
@@ -220,7 +217,9 @@ public class TitleActionBar extends BaseActivity {
 
         menuList.setAdapter(adapter);
     }
-
+    /*
+    *退出操作
+    */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK) {
@@ -248,8 +247,10 @@ public class TitleActionBar extends BaseActivity {
             ApplicationStack.getInstance().exit();
         }
     }
-    //<--------menu-------->
 
+    /*
+    * menu
+    * */
     public void setTitle(String title) {
         displayTitle = title;
         getSupportActionBar().setTitle(displayTitle);
@@ -323,17 +324,17 @@ public class TitleActionBar extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //这个是ActionBar上的图标响应
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        /*这个是ActionBar上的图标响应
+        * Handle action bar item clicks here. The action bar will
+        * automatically handle clicks on the Home/Up button, so long
+        * as you specify a parent activity in AndroidManifest.xml.
+        */
         if (menuToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-    //<--------menu-------->
 
     @Override
     protected void onDestroy() {

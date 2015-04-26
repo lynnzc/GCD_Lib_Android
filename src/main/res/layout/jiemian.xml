@@ -43,24 +43,15 @@
                 android:gravity="center_horizontal"
                 android:text="@string/app_name"
                 android:textColor="#ff181818"
+                android:textStyle="bold"
                 android:textSize="24sp"/>
-
-            <TextView android:id="@+id/version_name"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="@string/version_name"
-                android:layout_toRightOf="@id/app_name"
-                android:gravity="bottom"
-                android:textColor="#ff181818"
-                android:paddingBottom="6dip"
-                android:textSize="14sp"/>
         </LinearLayout>
         <View
             android:layout_width="wrap_content"
             android:layout_height="1px"
-            android:layout_marginLeft="50dip"
-            android:layout_marginRight="50dip"
-            android:background="#4c1066ee"
+            android:layout_marginLeft="125dip"
+            android:layout_marginRight="125dip"
+            android:background="#ffd5d5d5"
             android:id="@+id/singleline"
             android:layout_below="@id/app_text" />
         <TextView

@@ -49,6 +49,7 @@ import app.cheng.gc.Data.StudentInfo;
 import app.cheng.gc.Data.WebAddress;
 
 /**
+ * 核心的网络通信类，建立连接，登陆，获取数据
  * Created by lynnlyf on 2015/2/2.
  */
 
@@ -57,8 +58,8 @@ public class ClientAPI {
     private String password;
     private String checkcode;
 
-    private List<Cookie> list_cookie;
-    private static CookieStore cookiestore;
+    //private List<Cookie> list_cookie;
+    //private static CookieStore cookiestore;
 
     private int statue;
 
@@ -160,7 +161,6 @@ public class ClientAPI {
 
     public void Get() {
         //获得登陆页
-
         HttpGet get = new HttpGet(WebAddress.LOGIN_PAGE);
 
         get.addHeader("Accept", "text/html, application/xhtml+xml, */*");
@@ -250,16 +250,12 @@ public class ClientAPI {
             post.addHeader("Host", "lib.gdufe.edu.cn");
             post.addHeader("Accept-Encoding", "gzip, deflate");
             post.addHeader("Accept-Language", "zh-CN");
-
             post.setEntity(url_entity); //设置表单
 
             hc.getParams().setParameter(ClientPNames.HANDLE_REDIRECTS, false); //禁止重定向
             HttpResponse he = hc.execute(post); //执行请求
-
             HttpEntity result_entity = he.getEntity(); //返回结果
-
             result = EntityUtils.toString(result_entity); //结果页
-
             statue = he.getStatusLine().getStatusCode(); //状态码,302为成功,500失败，200账号密码错误
 
             //System.out.println(statue + " /statue"); //测试
@@ -272,7 +268,7 @@ public class ClientAPI {
                 return -1;
             }
             else {
-                System.out.println("不成功 " + result + "/result");
+                //System.out.println("不成功 " + result + "/result");
                 return 10;
             }
 
