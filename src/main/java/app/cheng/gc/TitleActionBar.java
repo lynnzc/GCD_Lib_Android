@@ -52,7 +52,9 @@ public class TitleActionBar extends BaseActivity {
     //menuLayout
     private DrawerLayout menuLayout;
     private RelativeLayout menuLayout_left;
+
     private ActionBarDrawerToggle menuToggle;
+
     private ImageButton menu_btn;
     private ImageButton menu_btn_login;
     //用户名
@@ -137,7 +139,7 @@ public class TitleActionBar extends BaseActivity {
         });
 
         if(savedInstanceState == null) {
-            selectItem(0);
+            selectItem(0); //default
         }
     }
 
@@ -187,7 +189,7 @@ public class TitleActionBar extends BaseActivity {
             });
         }
     }
-
+    //drawerlayout menu item adapter
     public void setAdapter() {
         ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
         for(int i = 0 ; i < menuTitle.length ; i++) {
@@ -332,16 +334,11 @@ public class TitleActionBar extends BaseActivity {
         if (menuToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onDestroy() {
-        if(WebAddress.state) {
-            //已经登陆
-            finish();
-        }
         super.onDestroy();
     }
 }

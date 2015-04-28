@@ -286,7 +286,7 @@ public class ClientAPI {
     }
 
     public int modifyPassword(String old_pw, String new_pw, String repeat_pw) {
-        HttpClient hc = new DefaultHttpClient();
+        //HttpClient hc = new DefaultHttpClient();
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
         params.add(new BasicNameValuePair("__EVENTTARGET", ""));
@@ -426,7 +426,7 @@ public class ClientAPI {
         this.method = method;
         this.word = word;
 
-        HttpClient hc = new DefaultHttpClient();
+        //HttpClient hc = new DefaultHttpClient();
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair(this.method, this.word));
         params.add(new BasicNameValuePair("dt", "ALL"));

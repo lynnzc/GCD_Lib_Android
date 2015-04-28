@@ -4,33 +4,37 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#4951ffcc">
+    android:background="#fffefffd">
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/historylist"
-        android:layout_marginTop="5dip"
         android:choiceMode="singleChoice"
         android:divider="#000000"
         android:dividerHeight="1px"
         android:footerDividersEnabled="true"
         android:layout_marginBottom="48dip" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="48dip"
-        android:id="@+id/pre_page_btn"
-        android:layout_toEndOf="@id/historylist"
-        android:layout_toRightOf="@id/historylist"
+    <LinearLayout
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="@string/pre_page_btn"/>
-    <Button
-        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="48dip"
-        android:layout_toEndOf="@id/historylist"
-        android:layout_toRightOf="@id/pre_page_btn"
-        android:id="@+id/next_page_btn"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/next_page_btn"/>
+        android:gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dip"
+            android:id="@+id/pre_page_btn"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:drawable="@drawable/function_next_page_action"
+            android:text="@string/pre_page_btn" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dip"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:id="@+id/next_page_btn"
+            android:drawable="@drawable/function_next_page_action"
+            android:text="@string/next_page_btn"/>
+    </LinearLayout>
 </RelativeLayout>

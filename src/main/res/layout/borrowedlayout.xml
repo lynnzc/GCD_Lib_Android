@@ -3,12 +3,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#4951ffcc">
+    android:background="#fffefffd">
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/borrowed_list"
-        android:layout_marginTop="5dip"
         android:choiceMode="singleChoice"
         android:divider="#000000"
         android:dividerHeight="1px"

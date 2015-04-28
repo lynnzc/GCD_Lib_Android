@@ -33,24 +33,35 @@ import app.cheng.gc.Data.WebAddress;
  * Created by lynnlyf on 2015/2/2.
  */
 public class Login extends BaseActivity {
-    private EditText username, password;
-    private CheckBox rem_pw;
-    private String userValue, passValue, checkcodeValue;
-    private SharedPreferences sp;
-
-    private EditText codeinput;
-    private ImageView checkcode;
-    private Button login_btn;
-
-    private TextView title;
-    private ImageButton back_btn;
-
-    private byte[] imagedata = null; //checkcode image
-
-    private ClientAPI client = new ClientAPI();
-
+    private final static String SAVE_PASSWORD = "app.cheng.gc.save_password";
     private final static int MSG_SUCCESS = 1; //获取验证码成功
     private final static int MSG_FAILURE = 0; //获取验证码失败
+    //账号，密码输入框
+    private EditText username, password;
+    //记住密码选择框
+    private CheckBox rem_pw;
+    //验证码输入框
+    private EditText codeinput;
+    //验证码显示
+    private ImageView checkcode;
+    //登陆按钮
+    private Button login_btn;
+    //actionBar组件
+    //标题
+    private TextView title;
+    //回退按钮
+    private ImageButton back_btn;
+
+    //记录输入值
+    private String userValue, passValue, checkcodeValue;
+    //记录账号密码
+    //key-value
+    private SharedPreferences sp;
+
+    //checkcode image
+    private byte[] imagedata = null;
+
+    private ClientAPI client = new ClientAPI();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,11 +90,11 @@ public class Login extends BaseActivity {
             }
         });
 
-        sp = this.getSharedPreferences("user_pass", Context.MODE_APPEND);
+        sp = this.getSharedPreferences(SAVE_PASSWORD, Context.MODE_APPEND);
         if(sp.getBoolean("ISCHECK", true)) {
             rem_pw.setChecked(true);
-            username.setText(sp.getString("username", userValue));
-            password.setText(sp.getString("password", passValue));
+            username.setText(sp.getString("username", ""));
+            password.setText(sp.getString("password", ""));
         }
 
         //登陆监听
@@ -112,20 +123,16 @@ public class Login extends BaseActivity {
                                 stu_info = client.GetUser(); //获得用户
 
                                 if (rem_pw.isChecked()) {
-                                    SharedPreferences sp = getSharedPreferences("client", MODE_APPEND);
+                                    //记住用户密码
                                     SharedPreferences.Editor edit = sp.edit();
                                     edit.putString("username", userValue);
                                     edit.putString("password", passValue);
                                     edit.commit();
-
                                 } else {
-                                    SharedPreferences sp = getSharedPreferences("client", MODE_APPEND);
                                     sp.edit().clear();
                                 }
 
-                                //System.out.println(stu_info.getName()+ "/姓名");
                                 Intent intent = new Intent(Login.this, TitleActionBar.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable(WebAddress.USER_INFO_TRANS, stu_info);
                                 WebAddress.state = true;

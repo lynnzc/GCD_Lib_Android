@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_gravity="left|center_vertical"
-        android:layout_marginLeft="8dip"
+        android:layout_marginLeft="4dip"
         android:visibility="gone"
         android:background="@drawable/menu_image_btn"/>
     <ImageButton
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_vertical"
-        android:layout_marginLeft="8dip"
+        android:layout_marginLeft="4dip"
         android:background="@drawable/menu_login_btn" />
 
 </FrameLayout>
