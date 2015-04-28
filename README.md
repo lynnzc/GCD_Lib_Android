@@ -1,7 +1,10 @@
-# README
-[本项目地址](https://github.com/lynnzc/GCD_Lib_Android "悬停显示") <br />
-`    https://github.com/lynnzc/GCD_Lib_Android ` <br />
-<br /> 这是一个学校图书馆网站的安卓客户端 <br />
+# HELLO
+[本项目地址](https://github.com/lynnzc/GCD_Lib_Android "悬停显示")  
+`https://github.com/lynnzc/GCD_Lib_Android `  
+- 这是一个学校图书馆网站的安卓客户端     
+- An android app demo for a library website.    
 
-An android app demo for a library website. <br />
-
+#HISTORY
+   - 2015.4.28  
+      - hava some ui changes  
+      - fix the code of saving accounts  
