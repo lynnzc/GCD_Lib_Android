@@ -141,7 +141,7 @@ public class Utils {
         borrowedMax = doc.getElementById("ctl00_cpRight_Pagination1_gotoddl2").
                 getElementsByTag("option").size();
 
-        System.out.println(borrowedMax + " /borrowedMax");
+        //System.out.println(borrowedMax + " /borrowedMax");
 
         Utils.setBorrowedMax(borrowedMax);
 

@@ -61,7 +61,7 @@ public class ClientAPI {
     //private List<Cookie> list_cookie;
     //private static CookieStore cookiestore;
 
-    private int statue;
+    private int status;
 
     private String result;
 
@@ -256,14 +256,14 @@ public class ClientAPI {
             HttpResponse he = hc.execute(post); //执行请求
             HttpEntity result_entity = he.getEntity(); //返回结果
             result = EntityUtils.toString(result_entity); //结果页
-            statue = he.getStatusLine().getStatusCode(); //状态码,302为成功,500失败，200账号密码错误
+            status = he.getStatusLine().getStatusCode(); //状态码,302为成功,500失败，200账号密码错误
 
             //System.out.println(statue + " /statue"); //测试
 
-            if(statue == 302) {
+            if(status == 302) {
                 //System.out.println("成功登陆"); //测试
             }
-            else if(statue == 200) {
+            else if(status == 200) {
                 //输入有误，连接成功
                 return -1;
             }

@@ -11,7 +11,7 @@ import app.cheng.gc.ClientAPI;
 /**
  * Created by lynnlyf on 2015/2/2.
  */
-public class WebAddress {
+public final class WebAddress {
     public final static String HOST = "lib.gdufe.edu.cn/opac";
     public final static String LOGIN_PAGE = "http://lib.gdufe.edu.cn/opac/login.aspx";
     //public final static String LOGIN = "http://lib.gdufe.edu.cn/OPAC/internal_login.aspx";

@@ -8,8 +8,10 @@
         android:layout_height="fill_parent"
         android:id="@+id/bookmarklist"
         android:choiceMode="singleChoice"
-        android:divider="#000000"
-        android:dividerHeight="1px"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="20px"
+        android:layout_marginRight="30dip"
+        android:layout_marginLeft="30dip"
         android:footerDividersEnabled="true"
         android:layout_marginBottom="48dip" />
     <LinearLayout
