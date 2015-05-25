@@ -8,3 +8,5 @@
    - 2015.4.28  
       - hava some ui changes  
       - fix the code of saving accounts  
+   - 2015.5.26
+      - some ui changes
