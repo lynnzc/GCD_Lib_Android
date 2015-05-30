@@ -10,3 +10,6 @@
       - fix the code of saving accounts  
    - 2015.5.26
       - some ui changes
+   - 2015.5.30
+   -  - fix some bugs("next/back page" buttons no responses, optimise some layouts, etc)
+   -  - some ui changes(buttons, searchbar, etc)
