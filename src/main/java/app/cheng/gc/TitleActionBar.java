@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
@@ -59,6 +60,7 @@ public class TitleActionBar extends BaseActivity {
     private ImageButton menu_btn_login;
     //用户名
     private TextView stu_info_item;
+    private LinearLayout stu_item;
 
     private StudentInfo stu_info = null;
 
@@ -72,6 +74,7 @@ public class TitleActionBar extends BaseActivity {
         setContentView(R.layout.menu);
 
         stu_info_item = (TextView)findViewById(R.id.student_info_item);
+        stu_item = (LinearLayout)findViewById(R.id.menu_user_item);
         displayDrawerTitle = displayTitle = getTitle().toString();
         menuLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         menuLayout_left = (RelativeLayout)findViewById(R.id.menu_layout_left);
@@ -126,7 +129,7 @@ public class TitleActionBar extends BaseActivity {
 
         menuLayout.setDrawerListener(menuToggle);
 
-        stu_info_item.setOnClickListener(new View.OnClickListener() {
+        stu_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //用户信息页
@@ -145,6 +148,8 @@ public class TitleActionBar extends BaseActivity {
 
     private void initActionBar() {
         ActionBar actionbar = getSupportActionBar();
+        //消除actionbar下阴影, 5.0
+        actionbar.setElevation(0);
         // 可以自定义actionbar
         actionbar.setCustomView(R.layout.actionbar_view);
         actionbar.setDisplayShowTitleEnabled(false);

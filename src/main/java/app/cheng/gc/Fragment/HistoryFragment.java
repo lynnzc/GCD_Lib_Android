@@ -47,7 +47,7 @@ public class HistoryFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     loadHistoryBookInfo = new LoadHistoryBookInfo();
-                    loadHistoryBookInfo.execute("下一页", "上一页");
+                    loadHistoryBookInfo.execute(WebAddress.SEARCH_PRE);
                 }
             });
 
@@ -55,31 +55,31 @@ public class HistoryFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     loadHistoryBookInfo = new LoadHistoryBookInfo();
-                    loadHistoryBookInfo.execute("下一页");
+                    loadHistoryBookInfo.execute(WebAddress.SEARCH_NEXT);
                 }
             });
             loadHistoryBookInfo = new LoadHistoryBookInfo();
-            loadHistoryBookInfo.execute();
+            loadHistoryBookInfo.execute(WebAddress.SEARCH_INIT);
         }
 
         return historyView;
     }
 
-    class LoadHistoryBookInfo extends AsyncTask<String, String, List<BorrowedBookInfo>> {
+    class LoadHistoryBookInfo extends AsyncTask<Integer, String, List<BorrowedBookInfo>> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
         @Override
-        protected List<BorrowedBookInfo> doInBackground(String[] params) {
-            if(params.length == 2) {
+        protected List<BorrowedBookInfo> doInBackground(Integer... params) {
+            if(params[0] == WebAddress.SEARCH_NEXT) {
                 return client.nextHistoryPage();
             }
-            else if(params.length == 3) {
+            else if(params[0] == WebAddress.SEARCH_PRE) {
                 return client.preHistroryPage();
             }
-            return client.getBorrowedHistory();
+            return client.getBorrowedHistory(); //SEARCH_INIT
         }
 
         @Override

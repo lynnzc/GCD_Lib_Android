@@ -24,14 +24,23 @@ public class Utils {
     private static String __VIEWSTATE;
     private static String __EVENTVALIDATION;
     private static int searchNum = 0;
-    private static int borrowedMax = 0;
 
+    private static int borrowedMax = 0;
+    private static int historyMax = 0;
     public static int getBorrowedMax() {
         return borrowedMax;
     }
 
     public static void setBorrowedMax(int borrowedMax) {
         Utils.borrowedMax = borrowedMax;
+    }
+
+    public static int getHistoryMax() {
+        return historyMax;
+    }
+
+    public static void setHistoryMax(int historyMax) {
+        Utils.historyMax = historyMax;
     }
 
     public static int getSearchNum() {
@@ -137,14 +146,11 @@ public class Utils {
 
     public static List<BorrowedBookInfo> getHistory(String html) {
         Document doc = Jsoup.parse(html);
-
-        borrowedMax = doc.getElementById("ctl00_cpRight_Pagination1_gotoddl2").
-                getElementsByTag("option").size();
-
-        //System.out.println(borrowedMax + " /borrowedMax");
-
-        Utils.setBorrowedMax(borrowedMax);
-
+        if(historyMax == 0) {
+            historyMax = doc.getElementById("ctl00_cpRight_Pagination1_gotoddl2").
+                    getElementsByTag("option").size();
+            Utils.setBorrowedMax(historyMax);
+        }
         Elements eles = doc.getElementsByClass("tb");
         List<BorrowedBookInfo> list_historybook = new ArrayList<BorrowedBookInfo>();
 
@@ -183,10 +189,11 @@ public class Utils {
 
     public static List<BorrowedBookInfo> getBookmark(String html) {
         Document doc = Jsoup.parse(html);
-        borrowedMax = doc.getElementById("ctl00_cpRight_Pagination2_gotoddl2").
-                getElementsByTag("option").size();
-        Utils.setBorrowedMax(borrowedMax);
-
+        if(borrowedMax == 0) {
+            borrowedMax = doc.getElementById("ctl00_cpRight_Pagination2_gotoddl2").
+                    getElementsByTag("option").size();
+            Utils.setBorrowedMax(borrowedMax);
+        }
         Elements eles = doc.getElementsByClass("tb");
         List<BorrowedBookInfo> list_bookmark = new ArrayList<BorrowedBookInfo>();
 
@@ -199,9 +206,9 @@ public class Utils {
                 BorrowedBookInfo bookmark_info = new BorrowedBookInfo();
 
                 String path = link.attr("href"); //相对地址
-                System.out.println(path + "/相对地址"); //测试
+                //System.out.println(path + "/相对地址"); //测试
                 bookmark_info.setSearchnum(Utils.catch_searchnum(path)); //获得搜索码
-                System.out.println(bookmark_info.getSearchnum() + "搜索码"); //测试
+//                System.out.println(bookmark_info.getSearchnum() + "搜索码"); //测试
 
                 for (int j = 0; j < item_es.size(); j++) {
                     switch (j) {

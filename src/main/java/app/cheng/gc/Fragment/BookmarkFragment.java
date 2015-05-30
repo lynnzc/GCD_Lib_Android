@@ -21,6 +21,7 @@ import java.util.Map;
 
 import app.cheng.gc.ClientAPI;
 import app.cheng.gc.Data.BorrowedBookInfo;
+import app.cheng.gc.Data.WebAddress;
 import app.cheng.gc.R;
 import app.cheng.gc.SearchItem;
 
@@ -48,7 +49,7 @@ public class BookmarkFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     loadBookmarkInfo = new LoadBookmarkInfo();
-                    loadBookmarkInfo.execute("下一页", "上一页");
+                    loadBookmarkInfo.execute(WebAddress.SEARCH_PRE);
                 }
             });
 
@@ -56,32 +57,33 @@ public class BookmarkFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     loadBookmarkInfo = new LoadBookmarkInfo();
-                    loadBookmarkInfo.execute("下一页");
+                    loadBookmarkInfo.execute(WebAddress.SEARCH_NEXT);
                 }
             });
 
             loadBookmarkInfo = new LoadBookmarkInfo();
-            loadBookmarkInfo.execute();
+            loadBookmarkInfo.execute(WebAddress.SEARCH_INIT);
         }
 
         return bookmarkView;
     }
 
-    class LoadBookmarkInfo extends AsyncTask<String, String, List<BorrowedBookInfo>> {
+    class LoadBookmarkInfo extends AsyncTask<Integer, String, List<BorrowedBookInfo>> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
         @Override
-        protected List<BorrowedBookInfo> doInBackground(String[] params) {
-            if(params.length == 2) {
+        protected List<BorrowedBookInfo> doInBackground(Integer... params) {
+            if(params[0] == WebAddress.SEARCH_NEXT) {
+                System.out.println("这是下一页"); //测试
                 return client.nextBookmarkPage();
             }
-            else if(params.length == 3) {
+            else if(params[0] == WebAddress.SEARCH_PRE) {
                 return client.preBookmarkPage();
             }
-            return client.getBookmarkInfo();
+            return client.getBookmarkInfo(); //SEARCH_INIT
         }
 
         @Override

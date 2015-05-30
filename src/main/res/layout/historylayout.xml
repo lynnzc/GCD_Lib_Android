@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#fffefffd">
     <ListView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
         android:id="@+id/historylist"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="20dip"
         android:layout_marginLeft="30dip"
         android:layout_marginRight="30dip"
-        android:footerDividersEnabled="true"
-        android:layout_marginBottom="48dip" />
+        android:footerDividersEnabled="true" />
     <LinearLayout
-        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="48dip"
@@ -26,17 +25,17 @@
             android:layout_width="wrap_content"
             android:layout_height="48dip"
             android:id="@+id/pre_page_btn"
-            android:layout_weight="10"
+            android:layout_weight="1"
             android:gravity="center"
-            android:drawable="@drawable/function_next_page_action"
+            android:background="@drawable/function_next_page_action"
             android:text="@string/pre_page_btn" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="48dip"
-            android:layout_weight="10"
+            android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/function_next_page_action"
             android:id="@+id/next_page_btn"
-            android:drawable="@drawable/function_next_page_action"
             android:text="@string/next_page_btn"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

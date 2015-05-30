@@ -27,6 +27,9 @@ public final class WebAddress {
     public final static String USER_INFO_TRANS = "stu_info"; //用于传递用户信息
     public final static String USER_TRANS = "user_info";
     //public final static String COOKIE_STORE = "cookie_store"; //cookie
+    public static final int SEARCH_INIT = 0;
+    public static final int SEARCH_NEXT = 1;
+    public static final int SEARCH_PRE = 2;
 
     public static Boolean state = false; //登录状态
     public static Boolean isCookieGet = false; //是否获取了cookie

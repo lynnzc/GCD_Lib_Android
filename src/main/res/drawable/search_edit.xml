@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="0dip" />
-    <solid android:color="#fffffced"/>
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android">-->
+    <!--<corners android:radius="0dip" />-->
+    <!--<solid android:color="#fffffced"/>-->
+<!--</shape>-->
 
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#fffffced"/>
+        </shape>
+    </item>
+    <item android:bottom="8dip"
+        android:left="5dip"
+        android:right="5dip">
+        <shape android:shape="rectangle">
+            <solid android:color="#0ac39e"/>
+        </shape>
+    </item>
+    <item android:bottom="16dip">
+        <shape android:shape="rectangle">
+            <solid android:color="#fffffced"/>
+        </shape>
+    </item>
+    <item android:left="6dip"
+        android:right="6dip"
+        android:bottom="9dip">
+        <shape android:shape="rectangle">
+            <solid android:color="#fffffced"/>
+        </shape>
+    </item>
+</layer-list>

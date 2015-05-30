@@ -285,52 +285,52 @@ public class ClientAPI {
         return 1;
     }
 
-    public int modifyPassword(String old_pw, String new_pw, String repeat_pw) {
-        //HttpClient hc = new DefaultHttpClient();
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-
-        params.add(new BasicNameValuePair("__EVENTTARGET", ""));
-        params.add(new BasicNameValuePair("__EVENTARGUMENT", ""));
-        params.add(new BasicNameValuePair("__VIEWSTATE", __VIEWSTATE));
-
-        params.add(new BasicNameValuePair("__EVENTVALIDATION", __EVENTVALIDATION));
-        params.add(new BasicNameValuePair("ctl00$cpRight$txtOldPass", old_pw));
-        params.add(new BasicNameValuePair("ctl00$cpRight$txtNewPass", new_pw));
-        params.add(new BasicNameValuePair("ctl00$cpRight$txtRepNewPass", repeat_pw));
-        params.add(new BasicNameValuePair("ctl00$cpRight$btnSubmit", "提交"));
-
-        HttpPost post = new HttpPost(WebAddress.MODIFY_PAS);
-        UrlEncodedFormEntity entity;
-
-        try {
-            entity = new UrlEncodedFormEntity(params, "utf-8");
-
-
-            post.addHeader("Accept", "text/html, application/xhtml+xml, */*");
-            post.addHeader("Connection", "Keep-Alive");
-            post.addHeader("Cache-Control", "no-cache");
-            post.addHeader("Content-Type", "");
-            post.addHeader("Accept-Encoding", "gzip, deflate");
-            post.addHeader("Accept-Language", "zh-CN");
-            post.addHeader("Host", "lib.gdufe.edu.cn");
-            post.addHeader("Original", "http://lib.gdufe.edu.cn");
-            post.setEntity(entity);
-
-            HttpResponse h_re = hc.execute(post);
-
-            return h_re.getStatusLine().getStatusCode();
-        }
-        catch(UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        catch(ClientProtocolException e) {
-            e.printStackTrace();
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
+//    public int modifyPassword(String old_pw, String new_pw, String repeat_pw) {
+//        //HttpClient hc = new DefaultHttpClient();
+//        List<NameValuePair> params = new ArrayList<NameValuePair>();
+//
+//        params.add(new BasicNameValuePair("__EVENTTARGET", ""));
+//        params.add(new BasicNameValuePair("__EVENTARGUMENT", ""));
+//        params.add(new BasicNameValuePair("__VIEWSTATE", __VIEWSTATE));
+//
+//        params.add(new BasicNameValuePair("__EVENTVALIDATION", __EVENTVALIDATION));
+//        params.add(new BasicNameValuePair("ctl00$cpRight$txtOldPass", old_pw));
+//        params.add(new BasicNameValuePair("ctl00$cpRight$txtNewPass", new_pw));
+//        params.add(new BasicNameValuePair("ctl00$cpRight$txtRepNewPass", repeat_pw));
+//        params.add(new BasicNameValuePair("ctl00$cpRight$btnSubmit", "提交"));
+//
+//        HttpPost post = new HttpPost(WebAddress.MODIFY_PAS);
+//        UrlEncodedFormEntity entity;
+//
+//        try {
+//            entity = new UrlEncodedFormEntity(params, "utf-8");
+//
+//
+//            post.addHeader("Accept", "text/html, application/xhtml+xml, */*");
+//            post.addHeader("Connection", "Keep-Alive");
+//            post.addHeader("Cache-Control", "no-cache");
+//            post.addHeader("Content-Type", "");
+//            post.addHeader("Accept-Encoding", "gzip, deflate");
+//            post.addHeader("Accept-Language", "zh-CN");
+//            post.addHeader("Host", "lib.gdufe.edu.cn");
+//            post.addHeader("Original", "http://lib.gdufe.edu.cn");
+//            post.setEntity(entity);
+//
+//            HttpResponse h_re = hc.execute(post);
+//
+//            return h_re.getStatusLine().getStatusCode();
+//        }
+//        catch(UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+//        catch(ClientProtocolException e) {
+//            e.printStackTrace();
+//        }
+//        catch(IOException e) {
+//            e.printStackTrace();
+//        }
+//        return -1;
+//    }
 
     public List<BorrowedBookInfo> getBorrowedContent() {
         HttpGet get = new HttpGet(WebAddress.BOOKBORROWED);
@@ -385,6 +385,7 @@ public class ClientAPI {
     }
 
     public List<BorrowedBookInfo> getBookmarkInfo() {
+        //System.out.println(bookmarkpage + "/测试"); //测试
         HttpGet get = new HttpGet(WebAddress.BOOKMARK  + "?page=" + bookmarkpage);
         addHttpGetHeader(get);
         try {

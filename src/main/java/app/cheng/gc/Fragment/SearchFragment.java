@@ -252,6 +252,7 @@ public class SearchFragment extends Fragment {
             if(!isLastpage) {
                 LoadBookTask loadBook = new LoadBookTask();
                 loadBook.execute(bookSearch.getText().toString().trim(), "下一页");
+                //pulltorefreshLayout.loadmoreFinish(PulltorefreshLayout.SUCCEED);
             }
             else {
                 Toast.makeText(getActivity()
